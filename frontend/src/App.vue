@@ -1,47 +1,45 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <navbar
+      :pages="pages"
+      :active-page="activePage"
+      :nav-link-click="(index) => activePage = index"
+  ></navbar>
+  
+  <page-viewer 
+      :page="pages[activePage]"
+  ></page-viewer>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+import Navbar from './components/Navbar.vue';
+import PageViewer from './components/PageViewer.vue';
+
+export default {
+  components: {
+      Navbar,
+      PageViewer
+  },
+  data() {
+      return {
+          activePage: 0,
+          pages: [
+              {
+                  link: {text: 'Home', url: 'index.html'},
+                  pageTitle: 'Home Page',
+                  content: 'This is the home content'
+              },
+              {
+                  link: {text: 'Player', url: 'player.html'},
+                  pageTitle: 'Player Page',
+                  content: 'This is the player content'
+              },
+              {
+                  link: {text: 'Tournament', url: 'tournament.html'},
+                  pageTitle: 'Tourney Page',
+                  content: 'This is the Tournament content'
+              }
+          ]
+      };
+  },
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+</script>
