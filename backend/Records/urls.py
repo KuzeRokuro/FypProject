@@ -1,8 +1,13 @@
-from django.urls import path
+from django.urls import include, path
+from rest_framework import routers
 from . import views
 
+router = routers.DefaultRouter()
+router.register(r'Player', views.PlayerViewSet)
+router.register(r'Tournament', views.TournamentViewSet)
+router.register(r'Match', views.MatchViewSet)
+
 urlpatterns = [
-    path('api/players/', views.get_players, name='get_players'),  # API endpoint
-    path('players/', views.players_page, name='players_page'),    # Webpage view
-    path('', views.players_page, name='default'),                 # Default route
+    path('', include(router.urls)),
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

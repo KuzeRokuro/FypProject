@@ -18,12 +18,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Home import views as home_views
+from Records import urls
 
 urlpatterns = [
+    *urls.urlpatterns,
     path('', home_views.homepage, name='homepage'),  # Root URL -> Home app
     path('admin/', admin.site.urls),
     path('Records/', include('Records.urls')),  # Other app URLs
-    path('Tournament/', include('Tournament.urls')),
-    path('Matches/', include('Matches.urls')),
 ]
 
