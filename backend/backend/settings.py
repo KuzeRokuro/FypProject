@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     'Records',
+    'Home',
+    'Tournament',
+    'Matches',
 ]
 
 MIDDLEWARE = [

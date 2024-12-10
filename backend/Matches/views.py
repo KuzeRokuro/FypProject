@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Match
 
-# Create your views here.
+def match_list(request):
+    matches = list(Match.objects.values())
+    return JsonResponse(matches, safe=False)

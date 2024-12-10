@@ -21,5 +21,8 @@ from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', include('Records.urls')),  # Include app_name's URLs
+    path('', include('Home.urls')),          # Home app
+    path('tournaments/', include('Tournament.urls')),  # Tournament app
+    path('matches/', include('Matches.urls')),         # Matches app
+    path('records/', include('Records.urls')),  # Include app_name's URLs
 ]

@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Tournament
 
-# Create your views here.
+def tournament_list(request):
+    tournaments = list(Tournament.objects.values())
+    return JsonResponse(tournaments, safe=False)
