@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Django Backend</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .nav-buttons {
+            margin: 20px 0;
+        }
+        .nav-buttons a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .nav-buttons a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Django Backend</h1>
-    <p>This is the homepage of the backend server.</p>
-    <ul>
-        <li><a href="/api/players/">View Players API</a></li>
-        <li><a href="/players/">View Players Page</a></li>
-    </ul>
+    <h1>Welcome to the Homepage</h1>
+    <p>Select an option to navigate:</p>
+    <div class="nav-buttons">
+        <a href="/records/">Players</a>
+        <a href="/tournament/">Tournaments</a>
+        <a href="/matches/">Matches</a>
+    </div>
 </body>
 </html>

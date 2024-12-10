@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
-def home_page(request):
-    return HttpResponse("<h1>Welcome to the Home Page</h1>")
+def homepage(request):
+    return render(request, 'homepage.html')  # Correct path
