@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ValidationError
 
 class Tournament(models.Model):
     t_name = models.CharField(max_length=100)
@@ -6,7 +7,7 @@ class Tournament(models.Model):
     cardgame = models.CharField(max_length=200)
     
     def __str__(self):
-        return self.name
+        return self.t_name
 
 class Player(models.Model):
     name = models.CharField(max_length=100)  

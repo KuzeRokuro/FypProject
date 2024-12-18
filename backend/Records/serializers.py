@@ -15,4 +15,4 @@ class TournamentSerializer(serializers.HyperlinkedModelSerializer):
 class MatchSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Match
-        fields = ['id', 'tournament','player1id','player1','player2id','player2','winner','match_date','match']
+        fields = ['id', 'tournament','player1id','player1','player2id','player2','winner','match_date','round']
