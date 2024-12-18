@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ValidationError
 
 class Tournament(models.Model):
     t_name = models.CharField(max_length=100)
