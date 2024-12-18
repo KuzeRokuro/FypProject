@@ -1,45 +1,42 @@
 <template>
-  <navbar
-      :pages="pages"
-      :active-page="activePage"
-      :nav-link-click="(index) => activePage = index"
-  ></navbar>
+    <div id="app">
+      <header>
+        <nav>
+          <router-link to="/">Home</router-link>
+          <router-link to="/players">Players</router-link>
+          <router-link to="/tournaments">Tournaments</router-link>
+        </nav>
+      </header>
+      <!-- Render the routed component -->
+      <router-view />
+    </div>
+  </template>
   
-  <page-viewer 
-      :page="pages[activePage]"
-  ></page-viewer>
-</template>
-
-<script>
-import Navbar from './components/Navbar.vue';
-import PageViewer from './components/PageViewer.vue';
-
-export default {
-  components: {
-      Navbar,
-      PageViewer
-  },
-  data() {
-      return {
-          activePage: 0,
-          pages: [
-              {
-                  link: {text: 'Home', url: 'index.html'},
-                  pageTitle: 'Home Page',
-                  content: 'This is the home content'
-              },
-              {
-                  link: {text: 'Player', url: 'player.html'},
-                  pageTitle: 'Player Page',
-                  content: 'This is the player content'
-              },
-              {
-                  link: {text: 'Tournament', url: 'tournament.html'},
-                  pageTitle: 'Tourney Page',
-                  content: 'This is the Tournament content'
-              }
-          ]
-      };
-  },
-}
-</script>
+  <script>
+  export default {
+    name: "App",
+  };
+  </script>
+  
+  <style>
+  /* Add some basic styling (optional) */
+  header {
+    background-color: #333;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  nav {
+    margin-top: 1rem;
+  }
+  nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  nav a.router-link-active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  </style>
+  
