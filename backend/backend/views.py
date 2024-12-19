@@ -1,6 +1,14 @@
-from django.shortcuts import render
-from Records.models import Player  # Replace 'YourModelName' with the name of your model
+from django.http import JsonResponse
+from Records.models import Player, Tournament, Match
 
-def record_list(request):
-    records = Player.objects.all()  # Fetch all records from the database
-    return render(request, 'record_list.html', {'records': records})
+def fetchPlayers(request):
+    players = Player.objects.all().values()  # Convert QuerySet to a list of dictionaries
+    return JsonResponse(list(players), safe=False)  # Return as JSON
+
+def fetchTournaments(request):
+    tournaments = Tournament.objects.all().values()
+    return JsonResponse(list(tournaments), safe=False)
+
+def fetchMatches(request):
+    match = Match.objects.all().values()
+    return JsonResponse(list(match), safe=False)
