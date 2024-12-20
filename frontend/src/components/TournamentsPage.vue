@@ -55,24 +55,49 @@
   </script>
   
   <style scoped>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f4f4f4;
-  }
-  
-  .error {
-    color: red;
-    margin-top: 10px;
-  }
+      table {
+        width: 80%;
+        max-width: 800px;
+        margin: 20px auto;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      
+      th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      th {
+        background-color: #303031;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+      
+      td {
+        color: #333;
+
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+      }
+      .error {
+        color: red;
+        margin-top: 10px;
+      }
   </style>
   
