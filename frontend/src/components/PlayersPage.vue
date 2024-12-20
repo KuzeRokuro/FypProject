@@ -59,24 +59,64 @@
   </script>
   
   <style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f4f4f4;
-  }
-  
-  p {
-    margin-top: 20px;
-  }
+
+    h1 {
+      font-family: 'Roboto', sans-serif;
+      text-align: center; /* Center align the heading */
+      font-size: 2.5rem; /* Increase the font size */
+      font-weight: bold; /* Make the text bold */
+      margin-top: 30px; /* Add spacing above the heading */
+      margin-bottom: 10px; /* Add spacing below the heading */
+      color: #303031; /* Set a dark, clean color */
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.2rem; /* Adjust font size slightly for better readability */
+      color: #555; /* Use a softer color for the paragraph */
+      margin-bottom: 30px; /* Add spacing below the paragraph */
+    }
+
+    table {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      border-collapse: collapse;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background-color: #303031;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    
+    td {
+      color: #333;
+
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+
   </style>
   
