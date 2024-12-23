@@ -31,7 +31,7 @@
     /* Add some basic styling (optional) */
     /* Header and Navbar Styles */
     #app {
-      background: #ffffff ; 
+      background: #f9f9f9 ; 
       min-height: 100vh; /* Make sure it covers the full viewport height */
       margin: 0;
       padding: 0;
