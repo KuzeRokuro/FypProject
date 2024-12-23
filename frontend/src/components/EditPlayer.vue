@@ -1,5 +1,6 @@
 <template>
-    <div class="container mt-5">
+    <div class="container">
+      <h1 class="form-title">Edit Player</h1>
       <form @submit.prevent="updatePlayer">
         <div class="mb-3">
           <label for="name" class="form-label">
@@ -29,7 +30,7 @@
             class="btn btn-primary"
             type="submit"
           >
-            Edit Player
+             Player
           </button>
         </div>
       </form>
@@ -82,3 +83,22 @@ export default {
   },
 };
 </script>
+
+<style>
+
+    .form-title {
+      font-size: 2.5rem;
+      color: #303031;
+      font-family: 'Roboto', sans-serif;
+      text-align: center; 
+      margin-bottom: 3rem; /* Space below title */
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+</style>

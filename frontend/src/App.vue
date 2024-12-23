@@ -31,7 +31,7 @@
     /* Add some basic styling (optional) */
     /* Header and Navbar Styles */
     #app {
-      background: #ffffff ; /* aolid orange bg*/
+      background: #f9f9f9 ; 
       min-height: 100vh; /* Make sure it covers the full viewport height */
       margin: 0;
       padding: 0;
@@ -51,7 +51,8 @@
 
     .nav-logo {
       flex-shrink: 0; /* Prevent the logo from shrinking */
-      margin-right: 20px;
+      margin-right: 30px;
+      margin-left: 10px;
     }
 
     .logo {
@@ -61,7 +62,7 @@
 
     .nav-links {
       display: flex; 
-      gap: 40px; /* Add space between links */
+      gap: 35px; /* Add space between links */
       align-items: center;
     }
 
