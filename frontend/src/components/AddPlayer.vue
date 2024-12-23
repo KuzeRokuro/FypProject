@@ -1,5 +1,6 @@
 <template>
     <div class="container mb-3">
+      <h1 class="form-title">Add Player</h1>
       <form @submit.prevent="addPlayer">
         <div class="mb-3">
           <label for="name" class="form-label">
