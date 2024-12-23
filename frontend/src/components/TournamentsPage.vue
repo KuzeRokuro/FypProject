@@ -9,6 +9,7 @@
             <th>Name</th>
             <th>Date</th>
             <th>Card Game</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -17,6 +18,11 @@
             <td>{{ tournament.t_name }}</td>
             <td>{{ tournament.date }}</td>
             <td>{{ tournament.cardgame }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm" @click="editTournament(tournament.id)">
+                Edit
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -51,6 +57,10 @@
         // Navigate to the Tournament page
         this.$router.push("/addtournament");
       },
+      editTournament(tournamentId) {
+        // Navigate to an edit page
+        this.$router.push(`/edit-tournament/${tournamentId}`);
+      }
     },
     created() {
       this.fetchTournaments(); // Fetch tournament data when the component is created
