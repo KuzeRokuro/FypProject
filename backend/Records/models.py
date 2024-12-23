@@ -25,7 +25,7 @@ class Match(models.Model):
     player2id = models.ForeignKey(Player, on_delete=models.CASCADE,related_name='matches2_id')
     player2 = models.CharField(max_length=100)
     winner = models.CharField(max_length=100, blank=True, null=True)
-    match_date = models.DateTimeField(auto_now_add=True)
+    match_date = models.DateTimeField(auto_now_add=True,null=True)
     round = models.IntegerField()
 
     def __str__(self):
