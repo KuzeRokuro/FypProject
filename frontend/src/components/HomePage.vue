@@ -39,37 +39,24 @@
 
       .buttons {
         display: flex;
-        justify-content: center; /* Center the buttons horizontally */
-        margin-top: 20px; /* Optional: Adjust spacing */
+        justify-content: center; /* Center the buttons  */
+        gap: 20px; /* Add space between buttons */
+        margin-top: 20px; 
       }
 
       .buttons button {
-        margin: 30px;
-        padding: 20px 30px;
-        font-size: 20px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #303031;
+        border: none;
+        border-radius: 5px;
         cursor: pointer;
-        border-radius: 5px; /* Optional: rounded corners */
-        color: white;
-        border: none; /* Remove button border */
       }
 
-      /* Blue button */
-      .blue {
-        background-color: #4394eb; /* Blue */
+      .buttons button:hover {
+        background-color: #444;
       }
 
-      .blue:hover {
-        background-color: #0056b3; /* Darker blue on hover */
-      }
-
-      /* Red button */
-      .red {
-        background-color: #ff4a4a; /* Red */
-      }
-
-      .red:hover {
-        background-color: #c13f1e; /* Darker red on hover */
-      }
-
-  </style>
+    </style>
   
