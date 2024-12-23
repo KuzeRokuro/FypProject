@@ -25,6 +25,9 @@
               <button class="btn btn-warning btn-sm" @click="startTournament(tournament.id)">
                 Start
               </button>
+              <button class="btn btn-warning btn-sm" @click="rankTournament(tournament.id)">
+                See Ranking
+              </button>
             </td>
           </tr>
         </tbody>
