@@ -28,7 +28,7 @@
 
       .home {
         text-align: center;
-        margin-top: 50px;
+        margin-top: 70px;
       }
 
       .home h1 {

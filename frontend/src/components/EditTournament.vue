@@ -1,6 +1,6 @@
 <template>
-    <div class="container mt-5">
-      <h1>Edit Tournament</h1>
+    <div class="container">
+      <h1 class="form-title" >Edit Tournament</h1>
       <form @submit.prevent="updateTournament">
         <div class="mb-3">
           <label for="t_name" class="form-label">Name</label>
