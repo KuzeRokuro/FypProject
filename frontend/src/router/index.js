@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../components/HomePage.vue";
 import PlayersPage from "../components/PlayersPage.vue";
 import TournamentsPage from "../components/TournamentsPage.vue";
+import AddPlayer from "@/components/AddPlayer.vue";
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: "/players",
     name: "Players",
     component: PlayersPage, // Replace with your actual Players page component
+  },
+  {
+    path: "/addplayer",
+    name: "AddPlayer",
+    component: AddPlayer,
   },
   {
     path: "/tournaments",
