@@ -28,20 +28,20 @@
 
       .home {
         text-align: center;
-        margin-top: 70px;
+        margin-top: 200px;
       }
 
       .home h1 {
+        font-family: sans-serif;
         font-size: 3rem;
         color: #333;
-        font-family: 'Roboto', sans-serif;
       }
 
       .buttons {
         display: flex;
         justify-content: center; /* Center the buttons  */
         gap: 20px; /* Add space between buttons */
-        margin-top: 20px; 
+        margin-top: 50px; 
       }
 
       .buttons button {

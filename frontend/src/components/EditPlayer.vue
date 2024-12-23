@@ -30,7 +30,7 @@
             class="btn btn-primary"
             type="submit"
           >
-             Player
+             Update Player
           </button>
         </div>
       </form>
@@ -91,7 +91,8 @@ export default {
       color: #303031;
       font-family: 'Roboto', sans-serif;
       text-align: center; 
-      margin-bottom: 3rem; /* Space below title */
+      margin-top: 6rem;
+      margin-bottom: 5rem; /* Space below title */
     }
     
     .form-label {

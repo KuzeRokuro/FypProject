@@ -29,7 +29,7 @@
             class="btn btn-primary"
             type="submit"
           >
-            Create Player
+            Add Player
           </button>
         </div>
       </form>
@@ -72,8 +72,3 @@ export default {
   },
 };
 </script>
-
-<style> 
-
-
-</style>
