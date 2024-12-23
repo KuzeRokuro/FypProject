@@ -4,6 +4,8 @@ import PlayersPage from "../components/PlayersPage.vue";
 import TournamentsPage from "../components/TournamentsPage.vue";
 import AddPlayer from "@/components/AddPlayer.vue";
 import AddTournament from "@/components/addTournament.vue";
+import EditTournament from "@/components/EditTournament.vue";
+import EditPlayer from "@/components/EditPlayer.vue";
 
 const routes = [
   {
@@ -22,6 +24,11 @@ const routes = [
     component: AddPlayer,
   },
   {
+    path: '/edit-player/:id',
+    name: 'EditPlayer',
+    component: EditPlayer,
+  }, 
+  {
     path: "/tournaments",
     name: "Tournaments",
     component: TournamentsPage, // Replace with your actual Tournaments page component
@@ -31,6 +38,11 @@ const routes = [
     name: "AddTournament",
     component: AddTournament,
   },
+  {
+    path: '/edit-tournament/:id',
+    name: 'EditTournament',
+    component: EditTournament,
+  },  
 ];
 
 const router = createRouter({

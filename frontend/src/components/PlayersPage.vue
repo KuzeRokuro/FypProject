@@ -21,7 +21,11 @@
             <td>0{{ player.phone }}</td>
             <td>{{ player.totalwins }}</td>
             <td>{{ player.totalmatch }}</td>
-            <td></td>
+            <td>
+              <button class="btn btn-warning btn-sm" @click="editPlayer(player.id)">
+                Edit
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -59,6 +63,10 @@
         // Navigate to the Player page
         this.$router.push("/addplayer");
       },
+      editPlayer(playerId) {
+        // Navigate to an edit page
+        this.$router.push(`/edit-player/${playerId}`);
+      }
     },
   };
   </script>
