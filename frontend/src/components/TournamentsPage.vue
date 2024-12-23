@@ -70,6 +70,10 @@
       startTournament(tournamentId) {
         // Navigate to an edit page
         this.$router.push(`/start-tournament/${tournamentId}`);
+      },
+      rankTournament(tournamentId) {
+        // Navigate to an rank page
+        this.$router.push(`/rank-tournament/${tournamentId}`);
       }
     },
     created() {
