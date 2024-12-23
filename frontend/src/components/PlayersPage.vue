@@ -123,5 +123,22 @@
       cursor: pointer;
     }
 
-  </style>
+    .add-player-button {
+      display: block; /* Make the button behave like a block element */
+      margin: 20px auto; /* Center the button horizontally and add spacing */
+      padding: 10px 20px; /* Add padding for better appearance */
+      background-color: #303031; /* Button background color */
+      color: #fff; /* Button text color */
+      font-size: 1rem; /* Font size */
+      border: none; /* Remove borders */
+      border-radius: 5px; /* Round the button corners */
+      cursor: pointer; /* Change cursor on hover */
+    }
+
+    .add-player-button:hover {
+      background-color: #444; /* Slightly lighten background on hover */
+    }
+
+    </style>
+
   
