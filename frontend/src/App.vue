@@ -4,7 +4,7 @@
         <nav>
 
           <div class="nav-logo">
-          <img src="@/assets/Hobby Outpost.png" alt="Logo" class="logo" />
+          <img src="@/assets/Hobby_Outpost-dark.png" alt="Logo" class="logo" />
           </div>
           
           <div class="nav-links">
@@ -31,7 +31,7 @@
     /* Add some basic styling (optional) */
     /* Header and Navbar Styles */
     #app {
-      background: linear-gradient(to bottom , #ffffff, #b7edff); /* Light blue gradient */
+      background: #ffffff ; /* aolid orange bg*/
       min-height: 100vh; /* Make sure it covers the full viewport height */
       margin: 0;
       padding: 0;
@@ -39,14 +39,14 @@
     }
 
     header {
-      background-color: #ffffff;
+      background-color: #272727;
       color: #333(0, 0, 0);
     }
 
     nav {
       display: flex; /* Flexbox for horizontal layout */
       align-items: center; /* Center items vertically */
-      padding: 1rem; 
+      padding: 0.5rem; 
     }
 
     .nav-logo {
@@ -66,7 +66,7 @@
     }
 
     .nav-links a {
-      color: rgb(15, 13, 13);
+      color: rgb(255, 255, 255);
       text-decoration: none;
       font-size: 1.2rem; 
     }
@@ -76,7 +76,7 @@
     }
 
     a:hover {
-      background-color: rgb(255, 249, 169); /* Yellow highlight */
+      background-color: rgb(100, 100, 100); /* Yellow highlight */
       padding: 5px 10px; /* Add padding to increase the size of the highlight */
       border-radius: 5px; /* Optional: Add rounded corners for a nicer look */
       transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transition */
