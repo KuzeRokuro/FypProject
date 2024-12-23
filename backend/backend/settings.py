@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     'rest_framework',
     'Records',
     'Home',
@@ -55,11 +56,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "backend.urls"
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Update to match your Vue.js dev server
-    "http://localhost:5174",
-]
 
 TEMPLATES = [
     {
