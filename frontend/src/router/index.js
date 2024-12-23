@@ -3,6 +3,7 @@ import HomePage from "../components/HomePage.vue";
 import PlayersPage from "../components/PlayersPage.vue";
 import TournamentsPage from "../components/TournamentsPage.vue";
 import AddPlayer from "@/components/AddPlayer.vue";
+import AddTournament from "@/components/addTournament.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/tournaments",
     name: "Tournaments",
     component: TournamentsPage, // Replace with your actual Tournaments page component
+  },
+  {
+    path: "/addtournament",
+    name: "AddTournament",
+    component: AddTournament,
   },
 ];
 
