@@ -1,0 +1,73 @@
+<template>
+    <div class="container mb-3">
+      <form @submit.prevent="addPlayer">
+        <div class="mb-3">
+          <label for="name" class="form-label">
+            Name
+          </label>
+          <input 
+            id="name"
+            type="text" 
+            class="form-control"
+            v-model="name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">
+            Phone Number
+          </label>
+          <input 
+            id="phone"
+            type="text" 
+            class="form-control"
+            v-model="phoneNumber"
+          />
+        </div>
+        <div class="mb-3">
+          <button
+            class="btn btn-primary"
+            type="submit"
+          >
+            Create Player
+          </button>
+        </div>
+      </form>
+    </div>
+  </template>
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "AddPlayer",
+  data() {
+    return {
+      name: "", // Model for player name
+      phoneNumber: "" // Model for player phone number
+    };
+  },
+  methods: {
+    addPlayer() {
+      const newPlayer = {
+        name: this.name, // Use 'this' to reference data properties
+        phone: this.phoneNumber, // Use 'this' to reference data properties
+        totalwins: 0, // Default value for totalwins
+        totalmatch: 0 // Default value for totalmatch
+      };
+
+      axios
+        .post("http://127.0.0.1:8000/Records/Player/", newPlayer)
+        .then((response) => {
+          console.log("Player added successfully:", response.data);
+          alert("Player added successfully!");
+          this.name = ""; // Clear the form
+          this.phoneNumber = ""; // Clear the form
+        })
+        .catch((error) => {
+          console.error("Error adding player:", error);
+          alert("Failed to add player. Please try again.");
+        });
+    },
+  },
+};
+</script>
