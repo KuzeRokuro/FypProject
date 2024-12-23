@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from Home import views as home_views
 from Records import urls
-from .views import PlayerView
+from .views import PlayerView,MatchView,Match
 
 urlpatterns = [
     *urls.urlpatterns,
@@ -27,5 +27,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('Records/', include('Records.urls')),  # Other app URLs
     path('Player/', PlayerView.as_view(), name='player_api'),
+    path('Match/', MatchView.as_view(), name='match_api'),
 ]
 

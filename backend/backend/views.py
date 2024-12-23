@@ -2,7 +2,11 @@ from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import View
 import json
-from Records.models import Player, Tournament, Match
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from Records.models import Match, Tournament, Player
+from Records.serializers import MatchSerializer
 
 def fetchPlayers(request):
     players = Player.objects.all().values()  # Convert QuerySet to a list of dictionaries
@@ -56,3 +60,47 @@ class TournamentView(View):
             return JsonResponse({"error": "Invalid JSON format."}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
+        
+class MatchView(View):
+    @api_view(['POST'])
+    def match_list(request):
+        if request.method == 'POST':
+            data = request.data
+
+            try:
+                # Validate foreign key relationships
+                tournament = Tournament.objects.get(id=data['tournament'])
+                player1 = Player.objects.get(id=data['player1id'])
+                player2 = Player.objects.get(id=data['player2id'])
+
+                # Save the match
+                match = Match.objects.create(
+                    tournament=tournament,
+                    player1id=player1,
+                    player1=data.get('player1', player1.name),  # Use provided or default to DB name
+                    player2id=player2,
+                    player2=data.get('player2', player2.name),  # Use provided or default to DB name
+                    winner=data.get('winner'),
+                    round=data['round']
+                )
+
+                return Response(
+                    {"message": "Match created successfully!", "id": match.id},
+                    status=status.HTTP_201_CREATED,
+                )
+
+            except (Tournament.DoesNotExist, Player.DoesNotExist) as e:
+                return Response(
+                    {"error": str(e)},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            except KeyError as e:
+                return Response(
+                    {"error": f"Missing field: {e}"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            except Exception as e:
+                return Response(
+                    {"error": str(e)},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
