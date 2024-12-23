@@ -22,6 +22,12 @@
               <button class="btn btn-warning btn-sm" @click="editTournament(tournament.id)">
                 Edit
               </button>
+              <button class="btn btn-warning btn-sm" @click="startTournament(tournament.id)">
+                Start
+              </button>
+              <button class="btn btn-warning btn-sm" @click="rankTournament(tournament.id)">
+                See Ranking
+              </button>
             </td>
           </tr>
         </tbody>
@@ -60,6 +66,10 @@
       editTournament(tournamentId) {
         // Navigate to an edit page
         this.$router.push(`/edit-tournament/${tournamentId}`);
+      },
+      startTournament(tournamentId) {
+        // Navigate to an edit page
+        this.$router.push(`/start-tournament/${tournamentId}`);
       }
     },
     created() {
