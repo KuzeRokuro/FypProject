@@ -1,8 +1,7 @@
 <template>
     <div>
       <h1>Player Page</h1>
-      <p>This is the Player page where you can view and manage player data.</p>
-  
+      <button @click="navigateToAddPlayer" class="add-player-button">Add Player</button>
       <!-- Table to display player data -->
       <table>
         <thead>
@@ -12,6 +11,7 @@
             <th>Phone Number</th>
             <th>Total Win</th>
             <th>Total Match</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +21,7 @@
             <td>0{{ player.phone }}</td>
             <td>{{ player.totalwins }}</td>
             <td>{{ player.totalmatch }}</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -53,6 +54,10 @@
           this.error = "Failed to fetch player data. Please try again later.";
           console.error(err);
         }
+      },
+      navigateToAddPlayer() {
+        // Navigate to the Player page
+        this.$router.push("/addplayer");
       },
     },
   };
