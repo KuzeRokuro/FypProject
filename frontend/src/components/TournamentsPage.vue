@@ -1,7 +1,7 @@
 <template>
     <div>
       <h1>Tournament Page</h1>
-      <p>This is the Tournament page where you can view and manage tournament data.</p>
+      <button @click="navigateToAddTournament" class="add-tournament-button">Create Tournament</button>
       <table>
         <thead>
           <tr>
@@ -46,6 +46,10 @@
             console.error("Error fetching tournament data:", error);
             this.errorMessage = "Failed to fetch tournament data. Please try again later.";
           });
+      },
+      navigateToAddTournament() {
+        // Navigate to the Tournament page
+        this.$router.push("/addtournament");
       },
     },
     created() {
