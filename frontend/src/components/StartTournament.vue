@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-5">
-      <h1>Start Tournament</h1>
+      <h1 class ="form-title">Start Tournament</h1>
       <form @submit.prevent="startTournament">
         <!-- Number of Players -->
         <div class="mb-3">
