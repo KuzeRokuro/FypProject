@@ -51,25 +51,25 @@
 
     .nav-logo {
       flex-shrink: 0; /* Prevent the logo from shrinking */
-      margin-right: 30px;
-      margin-left: 10px;
+      margin-right: 35px;
+      margin-left: 20px;
     }
 
     .logo {
-      width: 150px; /* Adjust size for a larger logo */
+      width: 120px; /* Adjust size for a larger logo */
       height: auto; /* Maintain aspect ratio */
     }
 
     .nav-links {
       display: flex; 
-      gap: 35px; /* Add space between links */
+      gap: 30px; /* Add space between links */
       align-items: center;
     }
 
     .nav-links a {
       color: rgb(255, 255, 255);
       text-decoration: none;
-      font-size: 1.2rem; 
+      font-size: 1.1rem; 
     }
 
     .nav-links a.router-link-active {
