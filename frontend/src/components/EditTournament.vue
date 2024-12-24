@@ -2,7 +2,7 @@
     <div class="container">
       <h1 class="form-title" >Edit Tournament</h1>
       <form @submit.prevent="updateTournament">
-        <div class="mb-3">
+        <div class="form-box">
           <label for="t_name" class="form-label">Name</label>
           <input 
             id="t_name" 
@@ -11,8 +11,6 @@
             v-model="tournament.t_name" 
             required 
           />
-        </div>
-        <div class="mb-3">
           <label for="date" class="form-label">Date</label>
           <input 
             id="date" 
@@ -21,8 +19,6 @@
             v-model="tournament.date" 
             required 
           />
-        </div>
-        <div class="mb-3">
           <label for="cardgame" class="form-label">Card Game</label>
           <input 
             id="cardgame" 
@@ -31,8 +27,8 @@
             v-model="tournament.cardgame" 
             required 
           />
+          <button class="btn-submit" type="submit">Update Tournament</button>
         </div>
-        <button class="btn btn-primary" type="submit">Update Tournament</button>
       </form>
       <p v-if="error" style="color: red;">{{ error }}</p>
     </div>

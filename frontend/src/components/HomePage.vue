@@ -1,7 +1,7 @@
 <template>
     <div class="home">
       <h1>Welcome to the Home Page </h1>
-      <p class="tagline">Manage tournaments and keep your competitive card game community 
+      <p class="tagline">Manage tournaments and keep your card game community 
         organized, informed, and engaged. </p>
       <div class="buttons">
         <button class="blue" @click="goToPlayers">Player</button>
