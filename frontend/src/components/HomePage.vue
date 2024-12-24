@@ -40,10 +40,9 @@
       }
 
       .tagline {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: #555;
         margin-top: 10px;
-        font-style: italic;
       }
 
       .buttons {

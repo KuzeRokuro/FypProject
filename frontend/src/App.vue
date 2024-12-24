@@ -56,7 +56,7 @@
     }
 
     .logo {
-      width: 120px; /* Adjust size for a larger logo */
+      width: 130px; /* Adjust size for a larger logo */
       height: auto; /* Maintain aspect ratio */
     }
 
