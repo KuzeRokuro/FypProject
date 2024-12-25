@@ -22,7 +22,7 @@
             <td>{{ player.totalwins }}</td>
             <td>{{ player.totalmatch }}</td>
             <td>
-              <button class="btn btn-warning btn-sm" @click="editPlayer(player.id)">
+              <button class="btn-action" @click="editPlayer(player.id)">
                 Edit
               </button>
             </td>
@@ -146,6 +146,23 @@
     .add-player-button:hover {
       background-color: #444; /* Slightly lighten background on hover */
     }
+
+    .btn-action {
+      padding: 10px 10px;
+      font-size: 0.9rem;
+      background-color: #ffc107 ;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 55%;
+
+      }
+
+      .btn-action:hover {
+        background-color:rgb(252, 127, 44);
+
+      }
+      
 
     </style>
 

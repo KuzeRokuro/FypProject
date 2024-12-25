@@ -1,7 +1,7 @@
 <template>
     <div class="container mt-5">
       <h1>Tournament Rankings</h1>
-  
+
       <div v-if="error" class="alert alert-danger mt-3">{{ error }}</div>
       <div v-if="matches.length" class="mt-4">
         <h2>Matches</h2>
@@ -153,8 +153,15 @@
     max-width: 800px;
     margin: auto;
   }
+
   h1, h2 {
     text-align: center;
+  }
+
+  h2 {
+    color: #333;
+    background-color:rgb(248, 197, 46) ;
+    margin-top:30px;
   }
   </style>
   

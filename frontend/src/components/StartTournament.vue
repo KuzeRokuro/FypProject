@@ -1,9 +1,9 @@
 <template>
     <div class="container mt-5">
-      <h1>Start Tournament</h1>
+      <h1 class ="form-title">Start Tournament</h1>
       <form @submit.prevent="startTournament">
         <!-- Number of Players -->
-        <div class="mb-3">
+        <div class="form-box">
           <label for="numPlayers" class="form-label">Number of Players Joining</label>
           <input 
             id="numPlayers" 
@@ -13,6 +13,7 @@
             @change="generatePlayerFields" 
             required 
           />
+          <button class="btn-submit" type="submit">Start Tournament</button>
         </div>
   
         <!-- Player Dropdown Fields -->
@@ -29,8 +30,6 @@
             </option>
           </select>
         </div>
-  
-        <button class="btn btn-primary" type="submit">Start Tournament</button>
       </form>
       <p v-if="error" style="color: red;">{{ error }}</p>
     </div>

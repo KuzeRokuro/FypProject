@@ -2,7 +2,7 @@
     <div class="container mb-3">
       <h1 class="form-title">Create Tournament</h1>
       <form @submit.prevent="addTournament">
-        <div class="mb-3">
+        <div class="form-box">
           <label for="t_name" class="form-label">Name</label>
           <input 
             id="t_name"
@@ -10,8 +10,6 @@
             class="form-control"
             v-model="t_name"
           />
-        </div>
-        <div class="mb-3">
           <label for="date" class="form-label">Date</label>
           <input 
             id="date"
@@ -19,8 +17,6 @@
             class="form-control"
             v-model="date"
           />
-        </div>
-        <div class="mb-3">
           <label for="cardgame" class="form-label">Card Game</label>
           <input 
             id="cardgame"
@@ -28,9 +24,7 @@
             class="form-control"
             v-model="cardgame"
           />
-        </div>
-        <div class="mb-3">
-          <button class="btn btn-primary" type="submit">
+          <button class="btn-submit" type="submit">
             Create Tournament
           </button>
         </div>
