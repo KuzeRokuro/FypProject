@@ -48,7 +48,7 @@
       .buttons {
         display: flex;
         justify-content: center; /* Center the buttons  */
-        gap: 50px; /* Add space between buttons */
+        gap: 30px; /* Add space between buttons */
         margin-top: 50px; 
       }
 
