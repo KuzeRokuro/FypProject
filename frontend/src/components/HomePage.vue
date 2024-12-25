@@ -1,6 +1,8 @@
 <template>
     <div class="home">
       <h1>Welcome to the Home Page </h1>
+      <p class="tagline">Manage tournaments and keep your card game community 
+        organized, informed, and engaged. </p>
       <div class="buttons">
         <button class="blue" @click="goToPlayers">Player</button>
         <button class="red" @click="goToTournaments">Tournament</button>
@@ -28,34 +30,40 @@
 
       .home {
         text-align: center;
-        margin-top: 70px;
+        margin-top: 200px;
       }
 
       .home h1 {
-        font-size: 3rem;
+        font-family: sans-serif;
+        font-size: 2.5rem;
         color: #333;
-        font-family: 'Roboto', sans-serif;
+      }
+
+      .tagline {
+        font-size: 1.3rem;
+        color: #555;
+        margin-top: 10px;
       }
 
       .buttons {
         display: flex;
         justify-content: center; /* Center the buttons  */
-        gap: 20px; /* Add space between buttons */
-        margin-top: 20px; 
+        gap: 30px; /* Add space between buttons */
+        margin-top: 50px; 
       }
 
       .buttons button {
-        padding: 10px 20px;
-        font-size: 1rem;
+        padding: 15px 37px;
+        font-size: 1.2rem;
         color: #fff;
-        background-color: #303031;
+        background-color: #ff830e ;
         border: none;
-        border-radius: 5px;
+        border-radius: 30px;
         cursor: pointer;
       }
 
       .buttons button:hover {
-        background-color: #444;
+        background-color: #af4820;
       }
 
     </style>

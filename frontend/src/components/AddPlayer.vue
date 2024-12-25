@@ -2,7 +2,7 @@
     <div class="container mb-3">
       <h1 class="form-title">Add Player</h1>
       <form @submit.prevent="addPlayer">
-        <div class="mb-3">
+        <div class="form-box">
           <label for="name" class="form-label">
             Name
           </label>
@@ -12,8 +12,6 @@
             class="form-control"
             v-model="name"
           />
-        </div>
-        <div class="mb-3">
           <label for="phone" class="form-label">
             Phone Number
           </label>
@@ -23,13 +21,11 @@
             class="form-control"
             v-model="phoneNumber"
           />
-        </div>
-        <div class="mb-3">
           <button
-            class="btn btn-primary"
+            class="btn-submit"
             type="submit"
           >
-            Create Player
+            Add Player
           </button>
         </div>
       </form>
@@ -72,8 +68,3 @@ export default {
   },
 };
 </script>
-
-<style> 
-
-
-</style>

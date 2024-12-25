@@ -2,7 +2,7 @@
     <div class="container">
       <h1 class="form-title">Edit Player</h1>
       <form @submit.prevent="updatePlayer">
-        <div class="mb-3">
+        <div class="form-box">
           <label for="name" class="form-label">
             Name
           </label>
@@ -13,8 +13,6 @@
             v-model="player.name"
             required
           />
-        </div>
-        <div class="mb-3">
           <label for="phone" class="form-label">
             Phone Number
           </label>
@@ -24,13 +22,11 @@
             class="form-control"
             v-model="player.phone"
           />
-        </div>
-        <div class="mb-3">
           <button
-            class="btn btn-primary"
+            class="btn-submit"
             type="submit"
           >
-             Player
+             Update Player
           </button>
         </div>
       </form>
@@ -86,19 +82,49 @@ export default {
 
 <style>
 
-    .form-title {
-      font-size: 2.5rem;
-      color: #303031;
-      font-family: 'Roboto', sans-serif;
-      text-align: center; 
-      margin-bottom: 3rem; /* Space below title */
-    }
-    
-    .form-label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-      color: #333;
-    }
+  .form-title {
+    font-size: 2.5rem;
+    color: #303031;
+    font-family: 'Roboto', sans-serif;
+    text-align: center; 
+    margin-top: 5rem;
+    margin-bottom: 3rem; /* Space below title */
+  }
+
+  .form-box {
+    background-color: #ffffff; /* White background for the box */
+    padding: 20px; /* Add some space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    width: 100%;
+    max-width: 400px; /* Set a max width for the box */
+    margin: 0 auto; /* Center the box horizontally */
+  }
+
+  
+  .form-label {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .btn-submit {
+
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #ff830e ;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 2rem;
+    width: 100%;
+
+  }
+
+  .btn-submit:hover {
+        background-color:rgb(98, 197, 255);
+      }
 
 </style>
