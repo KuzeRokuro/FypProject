@@ -7,6 +7,7 @@ import AddTournament from "@/components/AddTournament.vue";
 import EditTournament from "@/components/EditTournament.vue";
 import EditPlayer from "@/components/EditPlayer.vue";
 import StartTournament from "@/components/StartTournament.vue";
+import RankTournament from "@/components/RankTournament.vue";
 
 const routes = [
   {
@@ -48,6 +49,12 @@ const routes = [
     path: '/start-tournament/:id',
     name: 'StartTournament',
     component: StartTournament,
+  }, 
+  {
+    path: '/rank-tournament/:id',
+    name: 'RankTournament',
+    component: RankTournament,
+    props:true,
   }, 
 ];
 

@@ -38,7 +38,7 @@
 import axios from "axios";
 
 export default {
-  name: "EditTournament",
+  name: "EditPlayer",
   data() {
     return {
       player: {
