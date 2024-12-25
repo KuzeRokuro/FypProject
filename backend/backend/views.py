@@ -35,14 +35,14 @@ class PlayerView(View):
             data = json.loads(request.body)  # Parse JSON payload
             name = data.get("name")
             phone = data.get("phone")
-            totalwins = 0
-            totalmatch = 0
+            totalwins = data.get("totalwins")
+            totalmatch = data.get("totalmatch")
 
             if not name or not phone:
                 return JsonResponse({"error": "Missing required fields."}, status=400)
 
             # Create a new Player instance
-            player = Player.objects.create(name=name, phone=phone, totalwins=0, totalmatch=0)
+            player = Player.objects.create(name=name, phone=phone, totalwins=totalwins, totalmatch=totalmatch)
 
             return JsonResponse({"message": "Player created successfully!", "id": player.id}, status=201)
         except json.JSONDecodeError:
