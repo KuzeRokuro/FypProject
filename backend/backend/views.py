@@ -1,7 +1,11 @@
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 import json
+import os
+import pickle
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -104,3 +108,37 @@ class MatchView(View):
                     {"error": str(e)},
                     status=status.HTTP_400_BAD_REQUEST,
                 )
+
+def players_by_tournament(request, tournament_id):
+    tournament = get_object_or_404(Tournament, id=tournament_id)
+    matches = Match.objects.filter(tournament=tournament)
+    player_names = set()
+    for match in matches:
+        player_names.add(match.player1)
+        player_names.add(match.player2)
+    players = Player.objects.filter(name__in=player_names)
+    players_data = [{"id": player.id, "name": player.name} for player in players]
+    return JsonResponse(players_data, safe=False)
+
+import os
+import pickle
+from django.http import JsonResponse
+
+from django.views import View
+import json
+
+# Define the path to the model file
+model_path = os.path.join(os.path.dirname(__file__), 'Records', 'model.pkl')
+
+# Load the model
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
+
+@method_decorator(csrf_exempt, name='dispatch')
+class PredictView(View):
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        # Process the input data and make predictions
+        predictions = model.predict(data)
+        return JsonResponse(predictions.tolist(), safe=False)
+
