@@ -16,7 +16,7 @@ class Player(models.Model):
     totalmatch = models.IntegerField()     
 
     def __str__(self):
-        return self.name  # String representation of the model
+        return self.name 
 
 class Match(models.Model):
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE,related_name='matches')
