@@ -257,12 +257,53 @@ export default {
           }
         }
 
+        // Update player stats 
+        await this.updatePlayerStats();
+
         alert("New round started!");
         this.fetchMatches();
       } catch (error) {
         this.error = "Failed to start a new round. Please try again.";
         console.error("Error details:", error.response ? error.response.data : error.message);
       }
+    },
+    async updatePlayerStats() { 
+      try { 
+        for (const match of this.matches) { 
+          const player1 = this.players.find(player => player.name === match.player1); 
+          const player2 = this.players.find(player => player.name === match.player2); 
+          
+          if (player1) { 
+
+            const totalMatches1 = player1.totalmatch ? player1.totalmatch + 1 : 1;
+            const totalWins1 = player1.totalwins ? player1.totalwins + (match.winner === player1.name ? 1 : 0) : (match.winner === player1.name ? 1 : 0);
+
+            const player1Data = { 
+              totalmatch: totalMatches1, 
+              totalwins: totalWins1,
+            }; 
+            console.log("Updating player1:", player1.name, player1Data);
+            const response1 = await axios.patch(`http://127.0.0.1:8000/Records/Player/${player1.id}/`, player1Data); 
+            console.log("Updated player1 data:", response1.data); 
+          } 
+
+          if (player2) { 
+
+            const totalMatches2 = player2.totalmatch ? player2.totalmatch + 1 : 1; 
+            const totalWins2 = player2.totalwins ? player2.totalwins + (match.winner === player2.name ? 1 : 0) : (match.winner === player2.name ? 1 : 0);
+
+            const player2Data = { 
+              totalmatch: totalMatches2, 
+              totalwins: totalWins2,
+            }; 
+            console.log("Updating player2:", player2.name, player2Data);
+            const response2 = await axios.patch(`http://127.0.0.1:8000/Records/Player/${player2.id}/`, player2Data); 
+            console.log("Updated player2 data:", response2.data); 
+          } 
+        } 
+      } catch (updateError) { 
+        console.error("Error updating player data:", updateError.response ? updateError.response.data : updateError.message); 
+      } 
     },
     getPlayerIdByName(playerName) {
       const player = this.rankings.find((p) => p.name === playerName);
