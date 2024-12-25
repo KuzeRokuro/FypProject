@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from Home import views as home_views
 from Records import urls
-from .views import PlayerView,MatchView,Match
+from .views import PlayerView,MatchView,Match,players_by_tournament, PredictView
 
 urlpatterns = [
     *urls.urlpatterns,
@@ -28,5 +28,7 @@ urlpatterns = [
     path('Records/', include('Records.urls')),  # Other app URLs
     path('Player/', PlayerView.as_view(), name='player_api'),
     path('Match/', MatchView.as_view(), name='match_api'),
+    path('Records/PlayersByTournament/<int:tournament_id>/', players_by_tournament, name='players_by_tournament'),
+    path('predict/', PredictView.as_view(), name='predict'),
 ]
 
