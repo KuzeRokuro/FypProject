@@ -51,10 +51,35 @@
         </button>
       </div>
 
-      <!-- Debug Log -->
-      <div v-if="debugLog" class="mt-4">
-        <h4>Debug Log</h4>
-        <pre>{{ debugLog }}</pre>
+      <!-- Predict Round Button --> 
+      <div class="text-center mt-4"> 
+        <button class="btn btn-secondary" @click="predictRound"> 
+          Predict Round </button> 
+      </div>
+
+      <!-- Predicted Matches Table --> 
+       <div v-if="predictedMatches.length" class="mt-5"> 
+        <h2>Predicted Matches</h2> 
+        <table class="table table-bordered"> 
+          <thead> 
+            <tr> 
+              <th>Match ID</th> 
+              <th>Player 1</th> 
+              <th>Player 2</th> 
+              <th>Predicted Winner</th> 
+              <th>Round</th> 
+            </tr> 
+          </thead> 
+          <tbody> 
+            <tr v-for="(match, index) in predictedMatches" :key="index"> 
+              <td>{{ match.id }}</td> 
+              <td>{{ match.player1 }}</td> 
+              <td>{{ match.player2 }}</td> 
+              <td>{{ match.predicted_winner }}</td> 
+              <td>{{ match.round }}</td> 
+            </tr> 
+          </tbody> 
+        </table> 
       </div>
 
       <h2 class="mt-5">Player Rankings</h2>
@@ -91,6 +116,8 @@ export default {
       matches: [],
       rankings: [],
       editableWinners: [],
+      predictedMatches: [],
+      predictedWinner: [],
       error: null,
       canStartNewRound: false,
       debugLog: null, // Debug log for JSON payload
@@ -252,7 +279,36 @@ export default {
       } catch (error) {
         console.error("Error fetching players:", error);
       }
-    }
+    },
+    async predictRound() { 
+      try { 
+        // Find the highest round in the matches
+        const highestRound = Math.max(...this.matches.map(match => match.round));
+
+        // Prepare the data to send 
+        const inputpredictdata = { 
+          tournamentId: this.tournamentId, 
+          highestRound: highestRound 
+        };
+
+        const response = await axios.post('http://127.0.0.1:8000/predict/', inputpredictdata); 
+        const predictedMatches = response.data; 
+
+        // Map the predicted matches to the corresponding matches 
+        this.predictedMatches = this.matches.map(match => { 
+          const predictedMatch = predictedMatches.find(pred => pred.match_id === match.id); 
+          return { 
+            ...match, 
+            predicted_winner: predictedMatch ? predictedMatch.predicted_winner : null 
+          }; 
+        });
+
+        console.log("Predicted Matches:", this.predictedMatches); 
+      } catch (error) { 
+        console.error("Error predicting round:", error); 
+        this.error = "Failed to predict the round. Please try again."; 
+      } 
+    },
   },
 };
 </script>
