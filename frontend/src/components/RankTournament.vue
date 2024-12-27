@@ -376,8 +376,9 @@ h1 {
 
 h2 {
   font-family: 'Roboto';
+  color: white;
   text-align: center;
-  background-color: #ffc107 ;
+  background-color: #438b82 ;
   padding: 2px;
 }
 
