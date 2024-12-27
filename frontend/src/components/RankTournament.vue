@@ -3,7 +3,7 @@
     <h1>Tournament Rankings</h1>
 
     <div v-if="error" class="alert alert-danger mt-3">{{ error }}</div>
-    <div v-if="matches.length" class="mt-4">
+    <div v-if="matches.length" class="form-box-2">
       <h2>Matches</h2>
       <table class="table table-striped">
         <thead>
@@ -50,15 +50,19 @@
           Start New Round
         </button>
       </div>
+      </div>
 
+     
       <!-- Predict Round Button --> 
       <div class="text-center mt-4"> 
         <button class="btn btn-secondary" @click="predictRound"> 
           Predict Round </button> 
       </div>
 
+     
       <!-- Predicted Matches Table --> 
        <div v-if="predictedMatches.length" class="mt-5"> 
+        <div v-if="matches.length" class="form-box-2">
         <h2>Predicted Matches</h2> 
         <table class="table table-bordered"> 
           <thead> 
@@ -81,8 +85,10 @@
           </tbody> 
         </table> 
       </div>
+      </div>
 
-      <h2 class="mt-5">Player Rankings</h2>
+      <div v-if="matches.length" class="form-box-2">
+      <h2 >Player Rankings</h2>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -102,7 +108,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -354,12 +360,27 @@ export default {
 };
 </script>
 
+
 <style>
 .container {
   max-width: 800px;
   margin: auto;
 }
-h1, h2 {
+
+h1 {
   text-align: center;
+  margin-top: 35px;
+  margin-bottom: 35px;
+ 
 }
+
+h2 {
+  font-family: 'Roboto';
+  color: white;
+  text-align: center;
+  background-color: #438b82 ;
+  padding: 2px;
+}
+
+
 </style>
