@@ -53,6 +53,7 @@
       }
 
       .buttons button {
+        
         padding: 15px 37px;
         font-size: 1.2rem;
         color: #fff;
@@ -60,8 +61,12 @@
         border: none;
         border-radius: 30px;
         cursor: pointer;
-      }
+        box-shadow: 0 8px 16px 0 rgba(10, 8, 8, 0.2), 
+        0 6px 20px 0 rgba(119, 119, 119, 0.19);
 
+       }
+
+      
       .buttons button:hover {
         background-color: #af4820;
       }
