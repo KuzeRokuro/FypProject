@@ -95,7 +95,7 @@ export default {
     background-color: #ffffff; /* White background for the box */
     padding: 20px; /* Add some space inside the box */
     border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Subtle shadow effect */
     width: 100%;
     max-width: 400px; /* Set a max width for the box */
     margin: 0 auto; /* Center the box horizontally */
@@ -124,7 +124,20 @@ export default {
   }
 
   .btn-submit:hover {
-        background-color:rgb(98, 197, 255);
-      }
+    background-color:rgb(98, 197, 255);
+      
+  }
+
+  .form-box-2{
+        background-color: #ffffff; /* White background for the box */
+        padding: 20px; /* Add some space inside the box */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Subtle shadow effect */
+        width: 100%;
+        max-width: 900px; /* Set a max width for the box */
+        margin: 0 auto; /* Center the box horizontally */
+        margin-top: 40px;
+        margin-bottom: 40px;
+  }
 
 </style>

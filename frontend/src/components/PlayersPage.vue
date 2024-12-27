@@ -81,6 +81,7 @@
       margin-top: 30px; /* Add spacing above the heading */
       margin-bottom: 10px; /* Add spacing below the heading */
       color: #303031; /* Set a dark, clean color */
+      
     }
 
     p {

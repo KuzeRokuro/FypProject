@@ -30,13 +30,15 @@
   <style>
     /* Add some basic styling (optional) */
     /* Header and Navbar Styles */
+
     #app {
-      background: #f9f9f9 ; 
-      min-height: 100vh; /* Make sure it covers the full viewport height */
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif; 
+      background-image: url('@/assets/Background_pattern.png');
+      background-size: 500px; /* Adjust this value to control the size */
+      background-repeat: repeat; /* Repeat the image */
+      background-position: top left; /* Optional: Start tiling from the top-left corner */
+      min-height: 100vh; /* Ensure it covers the viewport height */
     }
+
 
     header {
       background-color: #272727;
