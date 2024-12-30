@@ -56,7 +56,7 @@
   
         try {
           const response = await axios.post(
-            "http://127.0.0.1:8000/Records/Tournament/",
+            "https://kuzerokuro.pythonanywhere.com/Records/Tournament/",
             newTournament,
             {
               headers: {

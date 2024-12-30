@@ -60,7 +60,7 @@
         async fetchTournamentDetails() {
           const tournamentId = this.$route.params.id;
           try {
-            const response = await axios.get(`http://127.0.0.1:8000/Records/Tournament/${tournamentId}/`);
+            const response = await axios.get(`https://kuzerokuro.pythonanywhere.com/Records/Tournament/${tournamentId}/`);
             this.tournament = response.data;
           } catch (error) {
             this.error = "Failed to fetch tournament details. Please try again later.";
@@ -69,7 +69,7 @@
         },
         async fetchPlayers() {
           try {
-            const response = await axios.get("http://127.0.0.1:8000/Records/Player/");
+            const response = await axios.get("https://kuzerokuro.pythonanywhere.com/Records/Player/");
             this.players = response.data;
           } catch (error) {
             this.error = "Failed to fetch player list. Please try again later.";
@@ -87,7 +87,7 @@
               ...this.tournament,
               players: this.selectedPlayers, // Send selected player IDs
             };
-            await axios.put(`http://127.0.0.1:8000/Records/Tournament/${tournamentId}/`, updatedData);
+            await axios.put(`https://kuzerokuro.pythonanywhere.com/Records/Tournament/${tournamentId}/`, updatedData);
             alert("Tournament updated successfully!");
             this.$router.push("/tournaments");
           } catch (error) {

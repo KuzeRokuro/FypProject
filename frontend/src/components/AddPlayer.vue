@@ -53,7 +53,7 @@ export default {
       };
 
       axios
-        .post("http://127.0.0.1:8000/Records/Player/", newPlayer)
+        .post("https://kuzerokuro.pythonanywhere.com/Records/Player/", newPlayer)
         .then((response) => {
           console.log("Player added successfully:", response.data);
           alert("Player added successfully!");

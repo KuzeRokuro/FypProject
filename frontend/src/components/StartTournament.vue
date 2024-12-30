@@ -57,7 +57,7 @@
         async fetchTournamentDetails() {
         const tournamentId = this.$route.params.id;
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/Records/Tournament/${tournamentId}/`);
+            const response = await axios.get(`https://kuzerokuro.pythonanywhere.com/Records/Tournament/${tournamentId}/`);
             this.tournament = response.data;
         } catch (error) {
             this.error = "Failed to fetch tournament details. Please try again later.";
@@ -66,7 +66,7 @@
         },
         async fetchPlayers() {
         try {
-            const response = await axios.get("http://127.0.0.1:8000/Records/Player/");
+            const response = await axios.get("https://kuzerokuro.pythonanywhere.com/Records/Player/");
             this.players = response.data;
         } catch (error) {
             this.error = "Failed to fetch player list. Please try again later.";
@@ -97,10 +97,10 @@
             const player2 = this.players.find((p) => p.id === player2Id);
 
             matchPayloads.push({
-                tournament: `http://127.0.0.1:8000/Records/Tournament/${tournamentId}/`,
-                player1id: `http://127.0.0.1:8000/Records/Player/${player1Id}/`,
+                tournament: `https://kuzerokuro.pythonanywhere.com/Records/Tournament/${tournamentId}/`,
+                player1id: `https://kuzerokuro.pythonanywhere.com/Records/Player/${player1Id}/`,
                 player1: player1.name,
-                player2id: `http://127.0.0.1:8000/Records/Player/${player2Id}/`,
+                player2id: `https://kuzerokuro.pythonanywhere.com/Records/Player/${player2Id}/`,
                 player2: player2.name,
                 winner: null, // No winner initially
                 round: 1, // Set round to 1 for now
@@ -109,7 +109,7 @@
 
             // Send matches to the backend
             for (const match of matchPayloads) {
-            await axios.post("http://127.0.0.1:8000/Records/Match/", match);
+            await axios.post("https://kuzerokuro.pythonanywhere.com/Records/Match/", match);
             }
 
             alert("Tournament started successfully!");

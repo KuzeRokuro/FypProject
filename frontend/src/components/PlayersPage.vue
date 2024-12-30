@@ -52,7 +52,7 @@
     methods: {
       async fetchPlayers() {
         try {
-          const response = await axios.get("http://localhost:8000/Records/Player/"); // Replace with your API URL
+          const response = await axios.get("https://kuzerokuro.pythonanywhere.com/Records/Player/?format=json"); // Replace with your API URL
           this.players = response.data; // Assign the fetched data to 'players'
         } catch (err) {
           this.error = "Failed to fetch player data. Please try again later.";

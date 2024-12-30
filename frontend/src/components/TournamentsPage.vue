@@ -50,7 +50,7 @@
     methods: {
       fetchTournaments() {
         axios
-          .get("http://127.0.0.1:8000/Records/Tournament/") // Replace with your actual API URL
+          .get("https://kuzerokuro.pythonanywhere.com/Records/Tournament/") // Replace with your actual API URL
           .then((response) => {
             this.tournaments = response.data; // Store data in the tournaments array
           })

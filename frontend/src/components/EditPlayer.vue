@@ -57,7 +57,7 @@ export default {
     async fetchPlayerDetails() {
       const playerId = this.$route.params.id; // Retrieve player ID from route parameters
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/Records/Player/${playerId}/`);
+        const response = await axios.get(`https://kuzerokuro.pythonanywhere.com/Records/Player/${playerId}/`);
         this.player = response.data;
       } catch (error) {
         this.error = "Failed to fetch player details. Please try again later.";
@@ -68,7 +68,7 @@ export default {
       const playerId = this.$route.params.id;
       console.log("Payload being sent:", JSON.stringify(this.player));
       try {
-        await axios.put(`http://127.0.0.1:8000/Records/Player/${playerId}/`, this.player);
+        await axios.put(`https://kuzerokuro.pythonanywhere.com/Records/Player/${playerId}/`, this.player);
         alert("Player updated successfully!");
         this.$router.push("/players"); // Redirect to players page
       } catch (error) {
