@@ -8,6 +8,7 @@ import EditTournament from "@/components/EditTournament.vue";
 import EditPlayer from "@/components/EditPlayer.vue";
 import StartTournament from "@/components/StartTournament.vue";
 import RankTournament from "@/components/RankTournament.vue";
+import ViewMatch from "@/components/ViewMatch.vue";
 
 const routes = [
   {
@@ -56,6 +57,12 @@ const routes = [
     component: RankTournament,
     props:true,
   }, 
+  {
+    path: '/view-match/:id',
+    name: 'ViewMatch',
+    component: ViewMatch,
+    props:true,
+  },
 ];
 
 const router = createRouter({
