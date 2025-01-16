@@ -183,4 +183,11 @@ export default {
     border-radius: 5px;
     width: 300px;
   }
+  @media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    border: none; /* Remove borders for a cleaner look */
+  }}
 </style>
