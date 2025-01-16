@@ -1,77 +1,121 @@
 <template>
-    <div id="app">
-      <header>
-        <nav>
-
-          <div class="nav-logo">
+  <div id="app">
+    <header>
+      <nav>
+        <div class="nav-logo">
           <img src="@/assets/Hobby_Outpost-dark.png" alt="Logo" class="logo" />
-          </div>
-          
-          <div class="nav-links">
+        </div>
+
+        <button class="nav-toggle" @click="toggleNav">
+          ☰
+        </button>
+
+        <div :class="['nav-links', { 'nav-links-show': isNavOpen }]">
           <router-link to="/">Home</router-link>
           <router-link to="/players">Players</router-link>
           <router-link to="/tournaments">Tournaments</router-link>
-          </div>
+        </div>
+      </nav>
+    </header>
+    <router-view />
+  </div>
+</template>
 
-        </nav>
-      </header>
-      <!-- Render the routed component -->
-      <router-view />
-    </div>
-  </template>
-  
   <script>
   export default {
     name: "App",
+    data() {
+      return {
+        isNavOpen: false,
+      };
+    },
+    methods: {
+      toggleNav() {
+        this.isNavOpen = !this.isNavOpen;
+      },
+    },
   };
   </script>
+
   
   
   <style>
-    /* Add some basic styling (optional) */
-    /* Header and Navbar Styles */
-
+    /* General styles */
     #app {
       background-image: url('@/assets/Background_pattern.png');
-      background-size: 500px; /* Adjust this value to control the size */
-      background-repeat: repeat; /* Repeat the image */
-      background-position: top left; /* Optional: Start tiling from the top-left corner */
-      min-height: 100vh; /* Ensure it covers the viewport height */
+      background-size: 500px;
+      background-repeat: repeat;
+      background-position: top left;
+      min-height: 100vh;
     }
-
 
     header {
       background-color: #272727;
-      color: #333(0, 0, 0);
     }
 
     nav {
-      display: flex; /* Flexbox for horizontal layout */
-      align-items: center; /* Center items vertically */
-      padding: 0.5rem; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem;
+      position: relative; 
     }
 
     .nav-logo {
-      flex-shrink: 0; /* Prevent the logo from shrinking */
-      margin-right: 35px;
-      margin-left: 20px;
+      flex-shrink: 0;
+      margin-right: 20px;
     }
 
     .logo {
-      width: 130px; /* Adjust size for a larger logo */
-      height: auto; /* Maintain aspect ratio */
+      width: 130px;
+      height: auto;
     }
 
+    /* Ensure links are visible on desktop */
     .nav-links {
-      display: flex; 
-      gap: 30px; /* Add space between links */
+      display: flex;
+      gap: 20px; /* Space between links */
       align-items: center;
+      flex-grow: 1;
+    }
+
+    /* Ensure hamburger menu is hidden on desktop */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Mobile-specific styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; /* Hide links by default on mobile */
+        flex-direction: column;
+        background-color: #272727;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 1rem 0;
+      }
+
+      .nav-links-show {
+        display: flex; /* Show links when toggle is active */
+      }
+
+      .nav-toggle {
+        display: block; /* Show toggle button on mobile */
+      }
     }
 
     .nav-links a {
-      color: rgb(255, 255, 255);
+      color: white;
       text-decoration: none;
-      font-size: 1.1rem; 
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem; /* Add padding to make touch-friendly */
     }
 
     .nav-links a.router-link-active {
@@ -79,10 +123,10 @@
     }
 
     a:hover {
-      background-color: rgb(100, 100, 100); /* Yellow highlight */
-      padding: 5px 10px; /* Add padding to increase the size of the highlight */
-      border-radius: 5px; /* Optional: Add rounded corners for a nicer look */
-      transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transition */
+      background-color: rgb(100, 100, 100);
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, padding 0.3s ease;
     }
 
     </style>
