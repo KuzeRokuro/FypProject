@@ -361,8 +361,8 @@ export default {
         this.error = "Failed to predict the round. Please try again.";
       }
     },
-  },
-};
+  };
+
 </script>
 
 
