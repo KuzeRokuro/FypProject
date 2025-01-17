@@ -1,5 +1,4 @@
 <template>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <div class="container mt-5">
     <h1>Tournament Rankings</h1>
 
@@ -23,8 +22,8 @@
             <td>{{ match.player1 }}</td>
             <td>{{ match.player2 }}</td>
             <td>
-              <select 
-                v-model="editableWinners[index]" 
+              <select
+                v-model="editableWinners[index]"
                 class="form-control"
               >
                 <option disabled value="">Select a winner</option>
@@ -33,8 +32,8 @@
               </select>
             </td>
             <td>
-              <button 
-                class="btn btn-success" 
+              <button
+                class="btn btn-success"
                 @click="updateWinner(match.id, editableWinners[index])"
               >
                 Accept
@@ -53,38 +52,38 @@
       </div>
       </div>
 
-     
-      <!-- Predict Round Button --> 
-      <div class="text-center mt-4"> 
-        <button class="btn btn-secondary" @click="predictRound"> 
-          Predict Round </button> 
+
+      <!-- Predict Round Button -->
+      <div class="text-center mt-4">
+        <button class="btn btn-secondary" @click="predictRound">
+          Predict Round </button>
       </div>
 
-     
-      <!-- Predicted Matches Table --> 
-       <div v-if="predictedMatches.length" class="mt-5"> 
+
+      <!-- Predicted Matches Table -->
+       <div v-if="predictedMatches.length" class="mt-5">
         <div v-if="matches.length" class="form-box-2">
-        <h2>Predicted Matches</h2> 
-        <table class="table table-bordered"> 
-          <thead> 
-            <tr> 
-              <th>Match ID</th> 
-              <th>Player 1</th> 
-              <th>Player 2</th> 
-              <th>Predicted Winner</th> 
-              <th>Round</th> 
-            </tr> 
-          </thead> 
-          <tbody> 
-            <tr v-for="(match, index) in predictedMatches" :key="index"> 
-              <td>{{ match.id }}</td> 
-              <td>{{ match.player1 }}</td> 
-              <td>{{ match.player2 }}</td> 
-              <td>{{ match.predicted_winner }}</td> 
-              <td>{{ match.round }}</td> 
-            </tr> 
-          </tbody> 
-        </table> 
+        <h2>Predicted Matches</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Match ID</th>
+              <th>Player 1</th>
+              <th>Player 2</th>
+              <th>Predicted Winner</th>
+              <th>Round</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(match, index) in predictedMatches" :key="index">
+              <td>{{ match.id }}</td>
+              <td>{{ match.player1 }}</td>
+              <td>{{ match.player2 }}</td>
+              <td>{{ match.predicted_winner }}</td>
+              <td>{{ match.round }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       </div>
 
@@ -147,7 +146,7 @@ export default {
           `https://kuzerokuro.pythonanywhere.com/Records/Match/?tournament=${this.tournamentId}`
         );
         this.matches = response.data.filter(
-          (match) => match.tournament === `https://kuzerokuro.pythonanywhere.com/Records/Match/?tournament=${this.tournamentId}`
+          (match) => match.tournament === `http://127.0.0.1:8000/Records/Tournament/${this.tournamentId}/`
         );
         this.editableWinners = this.matches.map((match) => match.winner || "");
         this.checkIfNewRoundCanStart();
@@ -264,7 +263,7 @@ export default {
           }
         }
 
-        // Update player stats 
+        // Update player stats
         await this.updatePlayerStats();
 
         alert("New round started!");
@@ -274,23 +273,28 @@ export default {
         console.error("Error details:", error.response ? error.response.data : error.message);
       }
     },
-    async updatePlayerStats() { 
-      try { 
-        for (const match of this.matches) { 
-          const player1 = this.players.find(player => player.name === match.player1); 
-          const player2 = this.players.find(player => player.name === match.player2); 
-          
-          if (player1) { 
+    async updatePlayerStats() {
+      try {
+        // Get all matches for each player
+        const allMatches = await axios.get("https://kuzerokuro.pythonanywhere.com/Records/Match/");
 
-            const totalMatches1 = player1.totalmatch ? player1.totalmatch + 1 : 1;
-            const totalWins1 = player1.totalwins ? player1.totalwins + (match.winner === player1.name ? 1 : 0) : (match.winner === player1.name ? 1 : 0);
+        for (const player of this.players) {
+          let totalMatches = 0;
+          let totalWins = 0;
+
+          // Filter matches for the current player
+          const playerMatches = allMatches.data.filter(
+            (match) =>
+              match.player1 === player.name ||
+              match.player2 === player.name
+          );
 
             const player1Data = { 
               totalmatch: totalMatches1, 
               totalwins: totalWins1,
             }; 
             console.log("Updating player1:", player1.name, player1Data);
-            const response1 = await axios.patch(`https://kuzerokuro.pythonanywhere.com/Records/Player/${player1.id}/`, player1Data); 
+            const response1 = await axios.patch(`http://127.0.0.1:8000/Records/Player/${player1.id}/`, player1Data); 
             console.log("Updated player1 data:", response1.data); 
           } 
 
@@ -304,7 +308,7 @@ export default {
               totalwins: totalWins2,
             }; 
             console.log("Updating player2:", player2.name, player2Data);
-            const response2 = await axios.patch(`https://kuzerokuro.pythonanywhere.com/Records/Player/${player2.id}/`, player2Data); 
+            const response2 = await axios.patch(`http://127.0.0.1:8000/Records/Player/${player2.id}/`, player2Data); 
             console.log("Updated player2 data:", response2.data); 
           } 
         } 
@@ -328,34 +332,34 @@ export default {
         console.error("Error fetching players:", error);
       }
     },
-    async predictRound() { 
-      try { 
+    async predictRound() {
+      try {
         // Find the highest round in the matches
         const highestRound = Math.max(...this.matches.map(match => match.round));
 
-        // Prepare the data to send 
-        const inputpredictdata = { 
-          tournamentId: this.tournamentId, 
-          highestRound: highestRound 
+        // Prepare the data to send
+        const inputpredictdata = {
+          tournamentId: this.tournamentId,
+          highestRound: highestRound
         };
 
-        const response = await axios.post('https://kuzerokuro.pythonanywhere.com/predict/', inputpredictdata); 
+        const response = await axios.post('http://127.0.0.1:8000/predict/', inputpredictdata); 
         const predictedMatches = response.data; 
 
-        // Map the predicted matches to the corresponding matches 
-        this.predictedMatches = this.matches.map(match => { 
-          const predictedMatch = predictedMatches.find(pred => pred.match_id === match.id); 
-          return { 
-            ...match, 
-            predicted_winner: predictedMatch ? predictedMatch.predicted_winner : null 
-          }; 
+        // Map the predicted matches to the corresponding matches
+        this.predictedMatches = this.matches.map(match => {
+          const predictedMatch = predictedMatches.find(pred => pred.match_id === match.id);
+          return {
+            ...match,
+            predicted_winner: predictedMatch ? predictedMatch.predicted_winner : null
+          };
         });
 
-        console.log("Predicted Matches:", this.predictedMatches); 
-      } catch (error) { 
-        console.error("Error predicting round:", error); 
-        this.error = "Failed to predict the round. Please try again."; 
-      } 
+        console.log("Predicted Matches:", this.predictedMatches);
+      } catch (error) {
+        console.error("Error predicting round:", error);
+        this.error = "Failed to predict the round. Please try again.";
+      }
     },
   },
 };
@@ -372,7 +376,7 @@ h1 {
   text-align: center;
   margin-top: 35px;
   margin-bottom: 35px;
- 
+
 }
 
 h2 {
