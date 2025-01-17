@@ -144,10 +144,10 @@ export default {
       try {
         this.error = null;
         const response = await axios.get(
-          `http://127.0.0.1:8000/Records/Match/?tournament=${this.tournamentId}`
+          `https://kuzerokuro.pythonanywhere.com/Records/Match/?tournament=${this.tournamentId}`
         );
         this.matches = response.data.filter(
-          (match) => match.tournament === `http://127.0.0.1:8000/Records/Tournament/${this.tournamentId}/`
+          (match) => match.tournament === `https://kuzerokuro.pythonanywhere.com/Records/Match/?tournament=${this.tournamentId}`
         );
         this.editableWinners = this.matches.map((match) => match.winner || "");
         this.checkIfNewRoundCanStart();
@@ -187,7 +187,7 @@ export default {
       }
       try {
         this.error = null;
-        await axios.patch(`http://127.0.0.1:8000/Records/Match/${matchId}/`, { winner });
+        await axios.patch(`https://kuzerokuro.pythonanywhere.com/Records/Match/${matchId}/`, { winner });
         alert("Winner updated successfully!");
         this.fetchMatches();
       } catch (error) {
@@ -225,10 +225,10 @@ export default {
             const player2 = players[i + 1];
 
             newMatches.push({
-              tournament: `http://127.0.0.1:8000/Records/Tournament/${this.tournamentId}/`,
-              player1id: `http://127.0.0.1:8000/Records/Player/${player1.id}/`,
+              tournament: `https://kuzerokuro.pythonanywhere.com/Records/Tournament/${this.tournamentId}/`,
+              player1id: `https://kuzerokuro.pythonanywhere.com/Records/Player/${player1.id}/`,
               player1: player1.name,
-              player2id: `http://127.0.0.1:8000/Records/Player/${player2.id}/`,
+              player2id: `https://kuzerokuro.pythonanywhere.com/Records/Player/${player2.id}/`,
               player2: player2.name,
               winner: null,
               round: newRound,
@@ -238,8 +238,8 @@ export default {
             const player1 = players[i];
 
             newMatches.push({
-              tournament: `http://127.0.0.1:8000/Records/Tournament/${this.tournamentId}/`,
-              player1id: `http://127.0.0.1:8000/Records/Player/${player1.id}/`,
+              tournament: `https://kuzerokuro.pythonanywhere.com/Records/Tournament/${this.tournamentId}/`,
+              player1id: `https://kuzerokuro.pythonanywhere.com/Records/Player/${player1.id}/`,
               player1: player1.name,
               player2id: null,
               player2: null,
@@ -257,7 +257,7 @@ export default {
         for (const match of newMatches) {
           console.log("Posting match:", match); // Log each match before posting
           try {
-            const response = await axios.post(`http://127.0.0.1:8000/Records/Match/`, match);
+            const response = await axios.post(`https://kuzerokuro.pythonanywhere.com/Records/Match/`, match);
             console.log("Response from backend:", response.data);
           } catch (postError) {
             console.error("Error posting match:", postError.response ? postError.response.data : postError.message);
@@ -290,7 +290,7 @@ export default {
               totalwins: totalWins1,
             }; 
             console.log("Updating player1:", player1.name, player1Data);
-            const response1 = await axios.patch(`http://127.0.0.1:8000/Records/Player/${player1.id}/`, player1Data); 
+            const response1 = await axios.patch(`https://kuzerokuro.pythonanywhere.com/Records/Player/${player1.id}/`, player1Data); 
             console.log("Updated player1 data:", response1.data); 
           } 
 
@@ -304,7 +304,7 @@ export default {
               totalwins: totalWins2,
             }; 
             console.log("Updating player2:", player2.name, player2Data);
-            const response2 = await axios.patch(`http://127.0.0.1:8000/Records/Player/${player2.id}/`, player2Data); 
+            const response2 = await axios.patch(`https://kuzerokuro.pythonanywhere.com/Records/Player/${player2.id}/`, player2Data); 
             console.log("Updated player2 data:", response2.data); 
           } 
         } 
@@ -321,7 +321,7 @@ export default {
     },
     async fetchPlayers() {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/Records/PlayersByTournament/${this.tournamentId}/`);
+        const response = await axios.get(`https://kuzerokuro.pythonanywhere.com/Records/PlayersByTournament/${this.tournamentId}/`);
         this.players = response.data;
         console.log("Players fetched:", this.players);
       } catch (error) {
@@ -339,7 +339,7 @@ export default {
           highestRound: highestRound 
         };
 
-        const response = await axios.post('http://127.0.0.1:8000/predict/', inputpredictdata); 
+        const response = await axios.post('https://kuzerokuro.pythonanywhere.com/predict/', inputpredictdata); 
         const predictedMatches = response.data; 
 
         // Map the predicted matches to the corresponding matches 
