@@ -106,7 +106,7 @@
         font-size: 2.9rem;
         font-weight: bold;
         color: #ffffff; /* Text color for "Homepage" */
-        background-color: rgb(152, 176, 204);
+        background-color: rgb(152, 176, 204); /* 2nd choice : #ff830e
         padding: 0 10px; /* Padding around "Homepage" */
         border-radius: 5px; /* Optional: Add rounded corners */
       }
