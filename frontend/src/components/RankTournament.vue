@@ -146,7 +146,7 @@ export default {
           `https://kuzerokuro.pythonanywhere.com/Records/Match/?tournament=${this.tournamentId}`
         );
         this.matches = response.data.filter(
-          (match) => match.tournament === `http://127.0.0.1:8000/Records/Tournament/${this.tournamentId}/`
+          (match) => match.tournament === `https://kuzerokuro.pythonanywhere.com/Records/Tournament/${this.tournamentId}/`
         );
         this.editableWinners = this.matches.map((match) => match.winner || "");
         this.checkIfNewRoundCanStart();
@@ -289,32 +289,26 @@ export default {
               match.player2 === player.name
           );
 
-            const player1Data = { 
-              totalmatch: totalMatches1, 
-              totalwins: totalWins1,
-            }; 
-            console.log("Updating player1:", player1.name, player1Data);
-            const response1 = await axios.patch(`http://127.0.0.1:8000/Records/Player/${player1.id}/`, player1Data); 
-            console.log("Updated player1 data:", response1.data); 
-          } 
+          playerMatches.forEach(match => {
+            totalMatches++;
+            if (match.winner === player.name) {
+              totalWins++;
+            }
+          });
 
-          if (player2) { 
+          player.totalmatch = totalMatches;
+          player.totalwins = totalWins;
 
-            const totalMatches2 = player2.totalmatch ? player2.totalmatch + 1 : 1; 
-            const totalWins2 = player2.totalwins ? player2.totalwins + (match.winner === player2.name ? 1 : 0) : (match.winner === player2.name ? 1 : 0);
-
-            const player2Data = { 
-              totalmatch: totalMatches2, 
-              totalwins: totalWins2,
-            }; 
-            console.log("Updating player2:", player2.name, player2Data);
-            const response2 = await axios.patch(`http://127.0.0.1:8000/Records/Player/${player2.id}/`, player2Data); 
-            console.log("Updated player2 data:", response2.data); 
-          } 
-        } 
-      } catch (updateError) { 
-        console.error("Error updating player data:", updateError.response ? updateError.response.data : updateError.message); 
-      } 
+          // Update player data on the server
+          const playerData = {
+            totalmatch: totalMatches,
+            totalwins: totalWins,
+          };
+          await axios.patch(`https://kuzerokuro.pythonanywhere.com/Records/Player/${player.id}/`, playerData);
+        }
+      } catch (updateError) {
+        console.error("Error updating player data:", updateError.response ? updateError.response.data : updateError.message);
+      }
     },
     getPlayerIdByName(playerName) {
       const player = this.rankings.find((p) => p.name === playerName);
@@ -343,8 +337,8 @@ export default {
           highestRound: highestRound
         };
 
-        const response = await axios.post('http://127.0.0.1:8000/predict/', inputpredictdata); 
-        const predictedMatches = response.data; 
+        const response = await axios.post('https://kuzerokuro.pythonanywhere.com/predict/', inputpredictdata);
+        const predictedMatches = response.data;
 
         // Map the predicted matches to the corresponding matches
         this.predictedMatches = this.matches.map(match => {
@@ -361,8 +355,8 @@ export default {
         this.error = "Failed to predict the round. Please try again.";
       }
     },
-  };
-
+  },
+};
 </script>
 
 
