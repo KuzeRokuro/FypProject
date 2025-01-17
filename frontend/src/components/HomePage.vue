@@ -1,4 +1,5 @@
 <template>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div class="home-2">
       <div class="welcome-container">
       <span class="welcome-text">Welcome to the </span>
@@ -11,6 +12,8 @@
         <button class="blue" @click="goToPlayers">Player</button>
         <button class="red" @click="goToTournaments">Tournament</button>
       </div>
+
+      
     </div>
   </template>
   
